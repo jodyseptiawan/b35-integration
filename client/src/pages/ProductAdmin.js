@@ -5,13 +5,15 @@ import ShowMoreText from 'react-show-more-text';
 import rupiahFormat from 'rupiah-format';
 
 // Import useQuery here ...
+import {useQuery} from 'react-query'
+
 
 import NavbarAdmin from '../components/NavbarAdmin';
 import DeleteData from '../components/modal/DeleteData';
 
 import imgEmpty from '../assets/empty.svg';
 
-// Get API config here ...
+import {API} from '../config/api'
 
 export default function ProductAdmin() {
   let navigate = useNavigate();
@@ -20,6 +22,11 @@ export default function ProductAdmin() {
   document.title = 'DumbMerch | ' + title;
 
   // Create process for fetching products data from database with useQuery here ...
+
+  let {data: products, isLoading} = useQuery('productData', async () => {
+    const response = await API.get('/products')
+    return response.data.data
+  })
 
   const addProduct = () => {
     navigate('/add-product');
@@ -98,7 +105,7 @@ export default function ProductAdmin() {
                       </td>
                       <td className="align-middle">{item.qty}</td>
                       <td className="align-middle">
-                        <Button
+                        {/* <Button
                           onClick={() => {
                             handleUpdate(item.id);
                           }}
@@ -115,7 +122,7 @@ export default function ProductAdmin() {
                           style={{ width: '135px' }}
                         >
                           Delete
-                        </Button>
+                        </Button> */}
                       </td>
                     </tr>
                   ))}
@@ -135,11 +142,11 @@ export default function ProductAdmin() {
           </Col>
         </Row>
       </Container>
-      <DeleteData
+      {/* <DeleteData
         setConfirmDelete={setConfirmDelete}
         show={show}
         handleClose={handleClose}
-      />
+      /> */}
     </>
   );
 }
