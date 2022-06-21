@@ -10,9 +10,17 @@ import ProductCard from '../components/card/ProductCard';
 
 import imgEmpty from '../assets/empty.svg';
 
+import dataProduct from '../fakeData/product'
+
 export default function Product() {
   const title = 'Shop';
-  document.title = 'DumbMerch | ' + title;
+  document.title = 'DumbMerch | ' + title
+
+  const [products, setProducts] = useState([])
+
+  const [state] = useContext(UserContext);
+
+  console.log(state)
 
   const breakpointColumnsObj = {
     default: 6,

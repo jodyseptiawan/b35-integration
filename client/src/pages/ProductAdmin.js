@@ -9,6 +9,9 @@ import DeleteData from '../components/modal/DeleteData';
 
 import imgEmpty from '../assets/empty.svg';
 
+
+const products = []
+
 export default function ProductAdmin() {
   let navigate = useNavigate();
 
@@ -92,7 +95,7 @@ export default function ProductAdmin() {
                       </td>
                       <td className="align-middle">{item.qty}</td>
                       <td className="align-middle">
-                        <Button
+                        {/* <Button
                           onClick={() => {
                             handleUpdate(item.id);
                           }}
@@ -109,7 +112,7 @@ export default function ProductAdmin() {
                           style={{ width: '135px' }}
                         >
                           Delete
-                        </Button>
+                        </Button> */}
                       </td>
                     </tr>
                   ))}
@@ -129,11 +132,11 @@ export default function ProductAdmin() {
           </Col>
         </Row>
       </Container>
-      <DeleteData
+      {/* <DeleteData
         setConfirmDelete={setConfirmDelete}
         show={show}
         handleClose={handleClose}
-      />
+      /> */}
     </>
   );
 }
